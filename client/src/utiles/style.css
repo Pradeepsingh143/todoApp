@@ -1,0 +1,7 @@
+.task > .task-list i{
+    color: white;
+}
+
+.task > .task-list i:hover{
+    color: rgb(245, 55, 55);
+}
