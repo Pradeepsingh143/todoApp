@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/api/*"
+  from = "/*"
   to = "https://todoapp-production-419a.up.railway.app/:splat"
   status = 200
