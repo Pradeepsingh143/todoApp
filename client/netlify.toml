@@ -1,6 +1,6 @@
   [[redirects]]
-  from = "/*"
-  to = "https://todoapp-production-419a.up.railway.app/:splat"
+  from = "/login"
+  to = "http://localhost/v1/account/sessions/email/:splat"
   status = 200
 
 [[headers]]
