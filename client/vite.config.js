@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
     '/api/*': {
-      target: 'http://localhost:4000/',
+      target: 'https://todoapp-production-419a.up.railway.app',
       changeOrigin: true,
       secure: false,
     },
