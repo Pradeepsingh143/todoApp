@@ -5,6 +5,6 @@
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
-  for = "/*"
+  for = "http://localhost/v1/account/sessions/email"
     [headers.values]
     Access-Control-Allow-Origin = "*"
