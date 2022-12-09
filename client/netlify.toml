@@ -1,11 +1,16 @@
-  [[redirects]]
-  from = "/login"
-  to = "http://localhost/v1/account/sessions/email/:splat"
+[[redirects]]
+  from = "/api/*"
+  to = "https://todoapp-production-419a.up.railway.app/:splat"
   status = 200
-  force: true
+
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
-  for = "http://localhost/v1/account/sessions/email"
+  for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
