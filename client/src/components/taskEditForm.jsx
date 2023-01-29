@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function TaskEditForm({ todoId, index, Base_url, getTask }) {
+function TaskEditForm({ todoId, index, getTask }) {
   const [message, setMessage] = useState({ message: "", success: false });
   const [editTask, setEditTask] = useState({ task: "" });
 
@@ -9,7 +9,7 @@ function TaskEditForm({ todoId, index, Base_url, getTask }) {
     e.preventDefault();
     try {
       if (!(editTask.task === "")) {
-        await axios.put(`${Base_url}/api/editTask/${todoId}`, editTask, {
+        await axios.put(`/api/editTask/${todoId}`, editTask, {
           params: { index: index },
         });
         setMessage({ message: "Todo edit successfully", success: true });

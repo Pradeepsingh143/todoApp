@@ -19,16 +19,12 @@ const UserState = ({ children }) => {
   }, [])
 
 
-  const Base_url = 'https://todoapp-production-419a.up.railway.app';
-
-
   return (
     <userContext.Provider
       value={{
         userDetails,
         setUserDetails,
         getAccountDetails,
-        Base_url,
       }}>
       {children}
     </userContext.Provider>

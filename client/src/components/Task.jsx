@@ -3,12 +3,12 @@ import axios from "axios";
 import TaskEditForm from "./taskEditForm";
 import TaskForm from "./taskForm";
 
-const Task = ({ todoTask, setTask, Base_url, getTask }) => {
+const Task = ({ todoTask, setTask, getTask }) => {
   const [taskIndex, setTaskIndex] = useState();
 
   const handleDeleteTask = async (index) => {
     try {
-      await axios.delete(`${Base_url}/api/deleteTask/${todoTask._id}`, {
+      await axios.delete(`/api/deleteTask/${todoTask._id}`, {
         params: { index: index },
       });
       getTask();
@@ -45,7 +45,6 @@ const Task = ({ todoTask, setTask, Base_url, getTask }) => {
               <TaskEditForm
                 todoId={todoTask._id}
                 index={taskIndex}
-                Base_url={Base_url}
                 setTask={setTask}
                 getTask={getTask}
               />
@@ -76,7 +75,6 @@ const Task = ({ todoTask, setTask, Base_url, getTask }) => {
       </button>
       <TaskForm
         todoId={todoTask._id}
-        Base_url={Base_url}
         getTask={getTask}
       />
     </div>}

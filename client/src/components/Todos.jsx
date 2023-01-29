@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import TodoEditForm from "./todoEditForm";
 import axios from "axios";
 
-function Todos({ todo, setTask, getTodos, Base_url }) {
+function Todos({ todo, setTask, getTodos }) {
   const [todoId, setTodoId] = useState();
 
   const handleDeleteTodo = async (todos) => {
     try {
       const userObj = await JSON.parse(sessionStorage.getItem("userDetails"));
       await axios.delete(
-        `${Base_url}/api/deleteTodo/${todos._id}/${userObj.$id}`
+        `/api/deleteTodo/${todos._id}/${userObj.$id}`
       );
       getTodos();
     } catch (error) {

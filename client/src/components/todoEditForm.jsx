@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function TodoEditForm({ todoId, getTodos, Base_url }) {
+function TodoEditForm({ todoId, getTodos }) {
   const [message, setMessage] = useState({ message: "", success: false });
 
   const [todoEdit, setTodoEdit] = useState({
@@ -12,7 +12,7 @@ function TodoEditForm({ todoId, getTodos, Base_url }) {
   const handleEditTodo = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${Base_url}/api/editTodo/${todoId}`, todoEdit);
+      await axios.put(`/api/editTodo/${todoId}`, todoEdit);
       setMessage({ message: "Todo edit successfully", success: true });
       getTodos();
       setTodoEdit({ title: "", task: "" });

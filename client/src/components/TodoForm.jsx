@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Todoform({ getTodos, Base_url }) {
+function Todoform({ getTodos }) {
   const [message, setMessage] = useState({ message: "", success: false });
 
   const [todo, setTodo] = useState({
@@ -19,7 +19,7 @@ function Todoform({ getTodos, Base_url }) {
   const handleAddTodo = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${Base_url}/api/todoCreate`, todo);
+      await axios.post(`/api/todoCreate`, todo);
       setMessage({ message: "Todo successfully created", success: true });
       getTodos();
       setTodo({ ...todo, title: "", task: "" });

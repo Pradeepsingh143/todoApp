@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function taskForm({ todoId, Base_url, getTask }) {
+function taskForm({ todoId, getTask }) {
   const [message, setMessage] = useState({ message: "", success: false });
   const [addTask, setAddTask] = useState({ task: "" });
   
@@ -9,7 +9,7 @@ function taskForm({ todoId, Base_url, getTask }) {
     e.preventDefault();
     try {
       if (!(addTask.task === "")) {
-        await axios.post(`${Base_url}/api/createTask/${todoId}`, addTask);
+        await axios.post(`/api/createTask/${todoId}`, addTask);
         setMessage({ message: "Todo Added successfully", success: true });
         getTask();
         setAddTask({ task: "" });

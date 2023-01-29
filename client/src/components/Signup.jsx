@@ -1,13 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { account } from '../appwrite/AppWrite.config'
 import { ID } from "appwrite";
 import axios from 'axios'
-import userContext from '../context/userContext'
 
 
 function Signup() {
-  const {Base_url} = useContext(userContext);
   const navigate = useNavigate();
   const [error, setError] = useState({ message: '', error: false })
   const [user, setUser] = useState({
@@ -33,7 +31,7 @@ function Signup() {
         appwriteId: appWriteUser.$id,
       }
 
-      await axios.post(`${Base_url}/api/createUser`, UserData)
+      await axios.post(`/api/createUser`, UserData)
       navigate("/") //success
 
     } catch (error) {

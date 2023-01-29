@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 import "../utiles/style.css";
 import Todoform from "../components/TodoForm";
 import Todos from "../components/Todos";
 import axios from "axios";
-import userContext from "../context/userContext";
 import Task from "../components/Task";
 
 const Home = () => {
-  const { Base_url } = useContext(userContext);
   const [todo, setTodo] = useState();
   const [task, setTask] = useState();
   const [searchText, setSearchText] = useState({ text: "" });
@@ -16,7 +14,7 @@ const Home = () => {
   const getUserTodos = async () => {
     try {
       const userObj = await JSON.parse(sessionStorage.getItem("userDetails"));
-      const { data } = await axios.get(`${Base_url}/api/todos`, {
+      const { data } = await axios.get(`/api/todos`, {
         params: { userId: userObj.$id },
       });
       setTodo(data);
@@ -27,7 +25,7 @@ const Home = () => {
   };
 
   const getTask = async () => {
-    const taskData = await axios.get(`${Base_url}/api/getTask/${task._id}`);
+    const taskData = await axios.get(`/api/getTask/${task._id}`);
     setTask(taskData.data.myTask[0]);
   };
 
@@ -85,12 +83,11 @@ const Home = () => {
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-          <Todoform getTodos={getUserTodos} Base_url={Base_url} />
+          <Todoform getTodos={getUserTodos}  />
           <Todos
             todo={todo}
             setTask={setTask}
             getTodos={getUserTodos}
-            Base_url={Base_url}
           />
           {/* // Here our all of the title needs to be placed */}
         </aside>
@@ -114,7 +111,6 @@ const Home = () => {
             getTodos={getUserTodos}
             todoTask={task}
             setTask={setTask}
-            Base_url={Base_url}
             getTask={getTask}
           />
           <p className="mt-4 fs-5">
